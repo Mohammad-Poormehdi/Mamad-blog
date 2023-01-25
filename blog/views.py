@@ -21,7 +21,7 @@ def post(request, post_slug):
             'comment_form':comment_form,
             'post_comment': post_comment,
         })
-            
+
 
 def category(request, category_slug):
     selected_category = Category.objects.get(slug=category_slug,)
