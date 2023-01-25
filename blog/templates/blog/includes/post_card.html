@@ -1,0 +1,11 @@
+        <!-- card -->
+        <div dir="rtl" class=" relative p-4 bg-white space-y-4 rounded-xl shadow-xl max-md:w-full hover:scale-105 duration-300 dark:bg-slate-700">
+            <!-- thumbnail -->
+            <img src="{{post.image.url}}" class="w-full">
+            <!-- title -->
+            <h1 class="text-2xl dark:text-cyan-300">{{title}}</h1>
+            <!-- description -->
+            <p class="text-md my-2 text-gray-500 overflow-hidden text-ellipsis dark:text-white">{{description}}</p>
+            <!-- learn more buuton -->
+            <a href="/{{post.slug}}"><button class="bg-black text-white text-sm rounded-xl px-3 mt-3 py-1 hover:bg-gray-300 hover:text-black hover:border duration-200">اطلاعات بیشتر</button></a>
+        </div>

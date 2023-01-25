@@ -1,0 +1,16 @@
+{% extends 'blog/base.html' %}
+
+{% block posts %}
+<!-- categorys -->
+<div class="bg-gray-300 flex flex-wrap space-x-5 justify-center items-center p-3 dark:bg-slate-600">
+    {% for category in post_categorys %}
+    <a href="{% url 'category' category.slug %}" class="bg-white px-3 py-2 rounded-xl text-black hover:bg-gray-400 hover:text-white duration-300 dark:bg-slate-800 dark:text-cyan-300">{{category.title}}</a>
+    {%endfor %}
+</div>
+<!-- posts container -->
+    <div dir="rtl" class="container p-4 mx-auto grid grid-cols-3 gap-4 max-md:grid-cols-1">
+        {% for post in blog_posts %}
+            {% include 'blog/includes/post_card.html' with title=post.title description=post.description  %}
+        {% endfor %}
+    </div>
+{% endblock %}

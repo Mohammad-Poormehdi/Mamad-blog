@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body class="bg-slate-300 h-screen relative dark:bg-gradient-to-b from-cyan-900 to-slate-900 bg-no-repeat" style="font-family: 'Vazirmatn', sans-serif;">
+        <!-- Navbar -->
+        <nav class=" bg-white dark:bg-slate-800">
+            <!-- Navbar continer -->
+            <div class="flex p-3 container mx-auto justify-between items-center max-md:flex-col max-md:items-center">
+                <!-- logo -->
+                <h1 class="text-4xl dark:text-cyan-300" style="font-family: 'Lalezar', cursive;">ممد بلاگ</h1>
+                <!-- menu -->
+                <ul class="flex space-x-4 dark:text-cyan-300">
+                    <li><a href="">بلاگ</a></li>
+                    <li><a href="">درباره ما</a></li>
+                    <li><a href=""> تماس با ما</a></li>
+                </ul>
+            </div>
+        </nav>
+        {% block posts %}
+        {% endblock %}
+</body>
+</html>
