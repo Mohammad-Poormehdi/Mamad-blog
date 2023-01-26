@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from .models import Post, Category, PostComment
-from .forms import AddComment
+from .models import Post, Category
+from .forms import CommentForm
+
 # Create your views here.
 
 def index(request):
@@ -12,16 +13,19 @@ def index(request):
     })
 
 def post(request, post_slug):
-        comment_form = AddComment()
-        selected_post = Post.objects.get(slug=post_slug)
-        post_comment = PostComment.objects.value('comment')
-        return render(request, 'blog/post.html',{
-            'post':selected_post,
-            'post_found':True,
-            'comment_form':comment_form,
-            'post_comment': post_comment,
+    comment_form = CommentForm
+    selected_post = Post.objects.get(slug=post_slug)
+    comments = selected_post.comment.all()
+    if request.method == "GET":
+        return render(request, 'blog/post.html', {
+            "selected_post":selected_post,
+            "comment_form":comment_form,
+            "comments":comments,
         })
-
+    else:
+        comment_request = CommentForm(request.POST)
+        post_comment = comment_request.save()
+        selected_post.comment.add(post_comment)
 
 def category(request, category_slug):
     selected_category = Category.objects.get(slug=category_slug,)

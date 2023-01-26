@@ -2,10 +2,9 @@
 
 
 {% block posts %}
-    {% if post_found %}
         <div dir="rtl" class="container p-10 px-10 h-full bg-white space-y-10 mx-auto dark:bg-transparent">
-            <h1 class="text-6xl dark:text-cyan-300">{{post.title}}</h1>
-            <p class="text-xl py-10 dark:text-white">{{post.content}}</p>
+            <h1 class="text-6xl dark:text-cyan-300">{{selected_post.title}}</h1>
+            <p class="text-xl py-10 dark:text-white">{{selected_post.content}}</p>
             <!-- comment section -->
             <section class="bg-slate-300 p-4 rounded-xl space-y-6">
                 <h1 class="text-3xl dark:text-cyan-300">نظرات</h1>
@@ -14,17 +13,14 @@
                     <ul class="space-y-3">
                         {{comment_form.as_ul}}
                     </ul>
+                    <button class="bg-slate-500 my-3 text-white px-3 py-2 rounded-xl">ارسال</button>
                 </form>
-                <div dir="rtl" class="bg-white p-4 rounded-xl shadow-xl">
-                    <h2 class="text-lg">{{comment.name}}</h2>
+                {% for comment in comments %}
+                <div class="bg-white w-1/3 rounded-xl shadow-xl p-4">
+                    <h1 class="text-xl font-bold">{{comment.name}}</h1>
                     <p>{{comment.comment}}</p>
                 </div>
+                {% endfor %}
             </section>
         </div>
-    {% else %}
-        <div class=" text-center">
-            <h1 class="text-6xl mt-20">404 Not Found</h1>
-            <p class="text-xl">صفحه مورد نطر یافت نشد</p>
-        </div>
-    {% endif %}
 {% endblock %}

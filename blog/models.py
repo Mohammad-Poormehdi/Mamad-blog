@@ -7,7 +7,7 @@ class Category(models.Model):
     def __str__(self):
         return self.title
 
-class PostComment(models.Model):
+class Comment(models.Model):
     name = models.CharField(max_length=50)
     comment = models.TextField()
     def __str__(self):
@@ -20,4 +20,4 @@ class Post(models.Model):
     content = models.TextField()
     slug = models.SlugField(unique=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE,)
-    comment = models.ManyToManyField(PostComment, blank=True)
+    comment = models.ManyToManyField(Comment, blank=True)
