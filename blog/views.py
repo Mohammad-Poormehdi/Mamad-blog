@@ -15,7 +15,7 @@ def index(request):
 def post(request, post_slug):
     comment_form = CommentForm
     selected_post = Post.objects.get(slug=post_slug)
-    comments = selected_post.comment.all()
+    comments = selected_post.comment.all().order_by('-id')
     if request.method == "GET":
         return render(request, 'blog/post.html', {
             "selected_post":selected_post,
@@ -26,6 +26,11 @@ def post(request, post_slug):
         comment_request = CommentForm(request.POST)
         post_comment = comment_request.save()
         selected_post.comment.add(post_comment)
+        return render(request, 'blog/post.html', {
+            "selected_post":selected_post,
+            "comment_form":comment_form,
+            "comments":comments,
+        })
 
 def category(request, category_slug):
     selected_category = Category.objects.get(slug=category_slug,)
